@@ -41,5 +41,5 @@ $ docker run  instabenefitserver:latest
 
 ## Swagger 
 
-Swagger docs can be found on every environment on the `/api-docs` route. The swagger documentation is generated automatically from jsdoc strings. 
+Swagger docs can be found on every environment on the `/api-docs` route. The swagger documentation is generated automatically from jsdoc strings.
 
