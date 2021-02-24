@@ -37,12 +37,12 @@ spec:
           livenessProbe:
             httpGet:
               path: {{ .Values.livenessPath }}
-              port: http
+              port: 3000
             initialDelaySeconds: {{ .Values.livenessDelay }}
           readinessProbe:
             httpGet:
               path: {{ .Values.readinessPath }}
-              port: http
+              port: 3000
             initialDelaySeconds: {{ .Values.readinessDelay }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
