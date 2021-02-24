@@ -36,7 +36,7 @@ const options = {
       {
         url: "https://instabenefitserver-main.dev.dts-stn.com",
         description: "Production server",
-      }
+      },
     ],
   },
   apis: [__filename.replace(/app.js$/, "/routes/*.js")],
@@ -47,8 +47,8 @@ if( process.env.NODE_ENV === "development"){
   options.definition.servers.push(
       {
         url: "http://localhost:3000",
-        description: "Your localhost server for development"
-      }
+        description: "Your localhost server for development",
+      },
   )
   options.definition.servers.reverse()
 }
@@ -57,7 +57,7 @@ const specs = swaggerJsdoc(options);
 app.use(
     "/api-docs",
     swaggerUi.serve,
-    swaggerUi.setup(specs)
+    swaggerUi.setup(specs),
 );
 
 // use to test error handler
