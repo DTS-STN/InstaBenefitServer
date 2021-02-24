@@ -42,7 +42,7 @@ const options = {
   apis: [__filename.replace(/app.js$/, "/routes/*.js")],
 };
 
-
+/* istanbul ignore if */
 if( process.env.NODE_ENV === "development"){
   options.definition.servers.push(
       {
@@ -52,6 +52,7 @@ if( process.env.NODE_ENV === "development"){
   )
   options.definition.servers.reverse()
 }
+
 const specs = swaggerJsdoc(options);
 app.use(
     "/api-docs",
