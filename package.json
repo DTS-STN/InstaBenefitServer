@@ -2,6 +2,11 @@
   "name": "instabenefitserver",
   "version": "0.0.0",
   "private": true,
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
   "scripts": {
     "start:serve": "node ./bin/www",
     "dev": "cross-env NODE_ENV=development nodemon --exec npm run start:serve",
