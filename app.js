@@ -34,7 +34,7 @@ const options = {
     },
     servers: [
       {
-        url: "https://instabenefitserver-main.dev.dts-stn.com",
+        url: "https://instabenefitserver-dev.dev.dts-stn.com",
         description: "Production server",
       },
     ],

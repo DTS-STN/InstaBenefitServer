@@ -11,7 +11,7 @@ context: EsDCDTSDevRG-K8S
   {{ end }}
 
 environments:
-  main:
+  dev:
 
 releases:
   - name: instabenefitserver-{{ .Environment.Name }}
