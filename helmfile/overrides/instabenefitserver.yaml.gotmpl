@@ -1,0 +1,36 @@
+image:
+  repository: mtscontainers.azurecr.io/instabenefitserver
+  tag: "{{ requiredEnv "DOCKER_TAG" }}"
+  pullPolicy: Always
+
+extraEnv:
+  - name: CURAM_API
+    value: {{ requiredEnv "CURAM_API" }}
+  - name: USER_SERVICE_API
+    value: {{ requiredEnv "USER_SERVICE_API" }}
+  - name: BENEFIT_SERVICE_API
+    value: {{ requiredEnv "BENEFIT_SERVICE_API" }}
+
+ingress:
+      enabled: true
+      hosts:
+      {{- if or (eq .Environment.Name "prod-blue") (eq .Environment.Name "prod-green") }}
+          - instabenefitserver.{{ .Environment.Name }}.{{ requiredEnv "BASE_DOMAIN" }}
+          - instabenefitserver.{{ requiredEnv "BASE_DOMAIN" }}
+      {{ else }}
+          - instabenefitserver-{{ .Environment.Name }}.{{ requiredEnv "BASE_DOMAIN_DEV" }}
+          - instabenefitserver-{{ requiredEnv "BASE_DOMAIN_DEV" }}
+          - instabenefitserver-{{ .Environment.Name }}.dts-dev.dtbdmhfp.com
+      {{ end }}
+      annotations: {}
+      # kubernetes.io/ingress.class: traefik
+
+resources:
+  requests:
+    cpu: 200m
+    memory: 512Mi
+livenessDelay: 60
+readinessDelay: 60
+livenessPath: /
+readinessPath: /
+port: 80
