@@ -9,6 +9,7 @@
  * @swagger
  * /:
  *   get:
+ *     tags: [HealthCheck]
  *     description: health check
  *     responses:
  *       200:

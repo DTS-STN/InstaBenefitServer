@@ -10,6 +10,14 @@ extraEnv:
     value: {{ requiredEnv "USER_SERVICE_API" }}
   - name: BENEFIT_SERVICE_API
     value: {{ requiredEnv "BENEFIT_SERVICE_API" }}
+  - name: KEYCLOAK_ENDPOINT
+    value: {{ requiredEnv "KEYCLOAK_ENDPOINT" }}
+  - name: KEYCLOAK_CLIENT_ID
+    value: {{ requiredEnv "KEYCLOAK_CLIENT_ID" }}
+  - name: KEYCLOAK_REALM
+    value: {{ requiredEnv "KEYCLOAK_REALM" }}
+  - name: KEYCLOAK_CLIENT_SECRET
+    value: {{ requiredEnv "KEYCLOAK_CLIENT_SECRET" }}
 
 ingress:
       enabled: true

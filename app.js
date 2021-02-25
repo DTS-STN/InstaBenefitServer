@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const logger = require('morgan');
 const path = require("path");
@@ -15,10 +16,12 @@ app.use(express.urlencoded({ extended: false }));
 // register handlers
 const routes = fs.readdirSync("./routes")
 const routePaths = []
+
 for(const i in routes){
   const routePath = "./" + path.join("routes", routes[i].replace(/\.js$/, ""))
   routePaths.push(routePath)
   const route = require(routePath)
+  // if there is middlewares
   app.use("/", route.router)
 }
 
@@ -82,9 +85,9 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   console.log(err.stack)
   // render the error page
-  res.status(500);
+  res.status(err.statusCode || 500);
   res.json({
-    statusCode: err.status || 500,
+    statusCode: err.statusCode || 500,
     message: err.message,
   })
 });
